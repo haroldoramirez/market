@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Pais
+POST    /paises                     controllers.PaisController.inserir()
+PUT     /paises/:id                 controllers.PaisController.atualizar(id:Long)
+GET     /paises/:id                 controllers.PaisController.buscaPorId(id:Long)
+GET     /paises                     controllers.PaisController.buscaTodos()
+DELETE  /paises/:id                 controllers.PaisController.remover(id:Long)
+GET     /paises/filtro/:filtro      controllers.PaisController.filtra(filtro:String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
