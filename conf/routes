@@ -5,6 +5,24 @@
 # Home page
 GET     /                           controllers.Application.index()
 
+# Application
+GET     /versao                     controllers.Application.versao()
+
+# Login
+GET     /login                            controllers.LoginController.loginTela()
+GET     /autenticado                      controllers.LoginController.telaAutenticado()
+GET     /saiu                             controllers.LoginController.telaLogout()
+POST    /autenticar                       controllers.LoginController.autenticar()
+GET     /logout                           controllers.LoginController.logout()
+
+# Usuario
+POST    /usuarios                     controllers.UsuarioController.inserir()
+PUT     /usuarios/:id                 controllers.UsuarioController.atualizar(id:Long)
+GET     /usuarios                     controllers.UsuarioController.buscaTodos()
+GET     /usuarios/:id                 controllers.UsuarioController.buscaPorId(id:Long)
+DELETE  /usuarios/:id                 controllers.UsuarioController.remover(id:Long)
+GET     /usuarios/filtro/:filtro      controllers.UsuarioController.filtra(filtro:String)
+
 # Pais
 POST    /paises                     controllers.PaisController.inserir()
 PUT     /paises/:id                 controllers.PaisController.atualizar(id:Long)
@@ -12,6 +30,22 @@ GET     /paises/:id                 controllers.PaisController.buscaPorId(id:Lon
 GET     /paises                     controllers.PaisController.buscaTodos()
 DELETE  /paises/:id                 controllers.PaisController.remover(id:Long)
 GET     /paises/filtro/:filtro      controllers.PaisController.filtra(filtro:String)
+
+# Estado
+POST    /estados                     controllers.EstadoController.inserir()
+PUT     /estados/:id                 controllers.EstadoController.atualizar(id:Long)
+GET     /estados/:id                 controllers.EstadoController.buscaPorId(id:Long)
+GET     /estados                     controllers.EstadoController.buscaTodos()
+DELETE  /estados/:id                 controllers.EstadoController.remover(id:Long)
+GET     /estados/filtro/:filtro      controllers.EstadoController.filtra(filtro:String)
+
+# Cidade
+POST    /cidades                     controllers.CidadeController.inserir()
+PUT     /cidades/:id                 controllers.CidadeController.atualizar(id:Long)
+GET     /cidades/:id                 controllers.CidadeController.buscaPorId(id:Long)
+GET     /cidades                     controllers.CidadeController.buscaTodos()
+DELETE  /cidades/:id                 controllers.CidadeController.remover(id:Long)
+GET     /cidades/filtro/:filtro      controllers.CidadeController.filtra(filtro:String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

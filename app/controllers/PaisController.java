@@ -1,5 +1,6 @@
 package controllers;
 
+import actions.PlayAuthenticatedSecured;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Query;
 import models.Pais;
@@ -7,11 +8,13 @@ import play.Logger;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
 import javax.persistence.PersistenceException;
 import java.util.Date;
 import java.util.List;
 
+@Security.Authenticated(PlayAuthenticatedSecured.class)
 public class PaisController extends Controller {
 
     public Result inserir() {
@@ -22,7 +25,7 @@ public class PaisController extends Controller {
 
         if (paisBusca != null) {
             Logger.warn("País já cadastrado.");
-            return badRequest("O país " + paisBusca.getNome() + " já esta cadastrado.");
+            return badRequest("O país '" + paisBusca.getNome() + "' já esta cadastrado.");
         }
 
         try {
@@ -72,7 +75,7 @@ public class PaisController extends Controller {
     }
 
     public Result buscaTodos() {
-        Logger.info("Busca todos os Países");
+        Logger.info("Busca todos os Países.");
 
         return ok(Json.toJson(Ebean.find(Pais.class)
                 .order()

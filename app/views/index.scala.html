@@ -1,7 +1,150 @@
-@(message: String)
+@(username : String)(privilegio : Integer)
+<html ng-app="market">
+<head>
+    <!-- Ícone-->
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
-@main("Welcome to Play") {
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
 
-    @play20.welcome(message, style = "Java")
+    <!--Toastr-->
+    <link rel="stylesheet" href="assets/bower_components/angular-toastr/dist/angular-toastr.css"/>
 
-}
+    <!--Awesome Icons-->
+    <link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.css"/>
+
+    <!-- Font Style-->
+    <link rel="stylesheet" href="assets/stylesheets/main.css"/>
+
+    <!--Motion-->
+    <link rel="stylesheet" href="assets/bower_components/angular-motion/dist/angular-motion.css"/>
+
+    <!-- angular loading-bar-->
+    <link rel='stylesheet' href='assets/bower_components/angular-loading-bar/build/loading-bar.css' type='text/css' media='all' />
+
+    <!--Menu-->
+    <link rel="stylesheet" href="assets/stylesheets/menu.css"/>
+    <link rel="stylesheet" href="assets/stylesheets/stylemenu.css"/>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>SGM - Market</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a data-match-route href="#/" class="navbar-brand">
+                <i class="fa fa-shopping-cart"></i> Início
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                @if(username){
+                    @if(privilegio != 1){
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="fa fa-globe"> Endereços</span> <span class="fa fa-caret-down"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/#/paises"><span class="fa fa-flag"></span> Países</a></li>
+                            <li><a href="/#/estados"><span class="fa fa-flag-o"></span> Estados</a></li>
+                            <li><a href="/#/cidades"><span class="fa fa-flag-checkered"></span> Cidades</a></li>
+                        </ul>
+                    </li>
+                    }
+                }
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="label label-success">@username</span>   <span class="fa fa-cog"></span> <span class="fa fa-caret-down"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        @if(username){
+                        @if(privilegio != 1){
+                        <li><a href="/#/usuarios">
+                            <span class="fa fa-users"></span> Usuários</a>
+                        </li>
+                        <li class="divider"></li>
+                        }
+                        }
+                        <li class="dropdown-header">Autenticação</li>
+                        @if(!username){
+                        <li><a href="/login">
+                            <span class="fa fa-sign-in"></span> Entrar</a>
+                        </li>
+                        }
+                        @if(username){
+                        <li><a href="/logout">
+                            <span class="fa fa-sign-out"></span> Sair</a>
+                        </li>
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+    <div class="container">
+        <!-- View do Angular-->
+        <div ng-view="">
+
+        </div>
+        <!--Rodapé-->
+        <hr>
+        <footer class="footer">
+            <p class="text-center">&copy; 2015 Market Systems -
+                <b>Powered by Play Framework and AngularJS.
+                </b> Todos os direitos reservados.
+            </p>
+        </footer>
+    </div>
+
+    <!--Jquery-->
+    <script src="assets/bower_components/jquery/dist/jquery.js"></script>
+
+    <!--Bootstrap-->
+    <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!--AngularJS-->
+    <script src="assets/bower_components/angular/angular.js"></script>
+    <script src="assets/bower_components/angular-route/angular-route.js"></script>
+    <script src="assets/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="assets/bower_components/angular-animate/angular-animate.js"></script>
+
+    <!-- angular loading-bar-->
+    <script src="assets/bower_components/angular-loading-bar/build/loading-bar.js"></script>
+
+    <!--UI Boostrap-->
+    <script src="assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+    <!--Angular Strap-->
+    <script src="assets/bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="assets/bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+
+    <!--Toastr-->
+    <script src="assets/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+
+    <!--app-->
+    <script src="assets/app/app.js"></script>
+
+    <!--Servicos-->
+    <script src="assets/app/services/EnderecoService.js"></script>
+    <script src="assets/app/services/baseUrl.js"></script>
+
+    <!--Controllers AngularJS-->
+    <script src="assets/app/controllers/HomeController.js"></script>
+    <script src="assets/app/controllers/PaisController.js"></script>
+    <script src="assets/app/controllers/EstadoController.js"></script>
+    <script src="assets/app/controllers/UsuarioController.js"></script>
+    <script src="assets/app/controllers/CidadeController.js"></script>
+</body>
+</html>

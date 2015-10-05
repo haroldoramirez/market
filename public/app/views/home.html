@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div ng-controller="HomeController">
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title">I'm a modal!</h3>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li ng-repeat="item in items">
+                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                    </li>
+                </ul>
+                Selected: <b>{{ selected.item }}</b>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+        </script>
+    </div>
+    <div class="jumbotron">
+        <h1 class="fa fa-shopping-cart"> Market</h1>
+        <p>Powered by Play Framework and AngularJS</p>
+        <p><a class="btn btn-primary btn-lg" role="button" ng-click="open('lg')">Learn more</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.font-style {
+    color: #555;
+    text-shadow: 1px 1px 5px #ccc;
+}
+
+.pump {
+	color: #d9534f;
+}
+
+.pump-running {
+	color: #5cb85c;
+}

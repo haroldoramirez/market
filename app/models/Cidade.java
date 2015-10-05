@@ -4,13 +4,14 @@ import com.avaje.ebean.Model;
 import play.data.format.Formats;
 import play.libs.Json;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Pais extends Model {
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"nome" , "estado_id"})
+})
+public class Cidade extends Model {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,10 +22,10 @@ public class Pais extends Model {
     private String nome;
 
     @Column(length = 4)
-    private String ddi;
+    private String ddd;
 
-    @Column(length = 3)
-    private String sigla;
+    @ManyToOne(cascade = CascadeType.MERGE, optional = false)
+    private Estado estado;
 
     @Formats.DateTime(pattern="dd-MM-yyyy")
     private Date dataCadastro;
@@ -48,12 +49,20 @@ public class Pais extends Model {
         this.nome = nome;
     }
 
-    public String getDdi() {
-        return ddi;
+    public String getDdd() {
+        return ddd;
     }
 
-    public void setDdi(String ddi) {
-        this.ddi = ddi;
+    public void setDdd(String ddd) {
+        this.ddd = ddd;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public Date getDataCadastro() {
@@ -70,14 +79,6 @@ public class Pais extends Model {
 
     public void setDataAlteracao(Date dataAlteracao) {
         this.dataAlteracao = dataAlteracao;
-    }
-
-    public String getSigla() {
-        return sigla;
-    }
-
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
     }
 
     @Override

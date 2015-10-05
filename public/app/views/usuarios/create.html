@@ -1,0 +1,63 @@
+<div class="well">
+
+    <!--Título de Página-->
+    <legend>
+        <h1 class="font-style">
+            <i class="fa fa-users"></i> Cadastrar Usuário
+        </h1>
+    </legend>
+
+    <form class="form-horizontal" ng-submit="save()">
+        <div class="form-group">
+
+            <!--Input do Email-->
+            <div class="col-md-3">
+                <label class="control-label" for="usuario.email">Email</label>
+                <div ng-class="{'has-error': !usuario.email}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input autocomplete="off" placeholder="Insira o email" maxlength="30" class="form-control" type="text" ng-model="usuario.email" id="usuario.email" required/>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do Senha-->
+            <div class="col-md-3">
+                <label class="control-label" for="senha">Senha</label>
+                <div ng-class="{'has-error': !usuario.senha}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                        <input autocomplete="off" placeholder="insira a senha" maxlength="16" class="form-control" type="password" ng-model="usuario.senha" id="senha"/>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do Privilégio-->
+            <div class="col-md-3">
+                <label class="control-label">Privilégio</label>
+                <div ng-class="{'has-error': !usuario.privilegio}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-exclamation-circle"></i></span>
+                        <select ng-model="usuario.privilegio" class="form-control" id="privilegio">
+                            <option selected value="">Selecione</option>
+                            <option value=1>1 - Operador</option>
+                            <option value=2>2 - Administrador</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--Botões-->
+            <div class="col-md-12">
+                <div class="control-group">
+                    <br>
+                    <button id="save" class="btn btn-success" type="submit" ng-disabled="!usuario.email || !usuario.senha || !usuario.privilegio">
+                        <span class="fa fa-floppy-o"></span> Salvar
+                    </button>
+                    <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
+                        <span class="fa fa-arrow-left"></span> Voltar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

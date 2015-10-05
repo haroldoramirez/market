@@ -10,27 +10,30 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Pais extends Model {
+public class Usuario extends Model {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 25)
-    private String nome;
+    @Column(nullable = false, unique = true, length = 30)
+    private String email;
 
-    @Column(length = 4)
-    private String ddi;
+    @Column(nullable = false, length = 60)
+    private String senha;
 
-    @Column(length = 3)
-    private String sigla;
+    @Column(nullable = false)
+    private Integer privilegio;
 
     @Formats.DateTime(pattern="dd-MM-yyyy")
     private Date dataCadastro;
 
     @Formats.DateTime(pattern="dd-MM-yyyy")
     private Date dataAlteracao;
+
+    @Column(nullable = false)
+    private Boolean padraoDoSistema;
 
     public Long getId() {
         return id;
@@ -40,20 +43,28 @@ public class Pais extends Model {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getDdi() {
-        return ddi;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setDdi(String ddi) {
-        this.ddi = ddi;
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Integer getPrivilegio() {
+        return privilegio;
+    }
+
+    public void setPrivilegio(Integer privilegio) {
+        this.privilegio = privilegio;
     }
 
     public Date getDataCadastro() {
@@ -72,12 +83,12 @@ public class Pais extends Model {
         this.dataAlteracao = dataAlteracao;
     }
 
-    public String getSigla() {
-        return sigla;
+    public Boolean getPadraoDoSistema() {
+        return padraoDoSistema;
     }
 
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
+    public void setPadraoDoSistema(Boolean padraoDoSistema) {
+        this.padraoDoSistema = padraoDoSistema;
     }
 
     @Override

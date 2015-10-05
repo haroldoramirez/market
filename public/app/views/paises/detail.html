@@ -1,0 +1,93 @@
+<div class="well">
+
+    <!-- Título da Página-->
+    <legend>
+        <h1 class="font-style">
+            <i class="fa fa-flag"></i> Detalhe do País
+            <button type="button" class="btn btn-danger pull-right" ng-click="open('sm')">
+                <span class="fa fa-trash"></span> Remover
+            </button>
+        </h1>
+    </legend>
+
+    <!-- Modal de confirmação-->
+    <script type="text/ng-template" id="modalConfirmacao.html">
+        <div class="modal-header">
+            <h3 align="center" class="modal-title">Confirmação:</h3>
+        </div>
+        <div align="center" class="modal-body">
+            Deseja remover o país?
+        </div>
+        <div class="modal-footer">
+            <button id="delete" class="btn btn-warning" ng-click="delete()"><span class="fa fa-check"></span> Sim</button>
+            <button class="btn btn-default" ng-click="cancelModal()"><span class="fa fa-times"></span> Cancelar</button>
+        </div>
+    </script>
+
+    <form ng-init="init()" class="form-horizontal" ng-submit="update()">
+        <div class="form-group">
+
+
+            <!--Input do Nome-->
+            <div class="col-md-3">
+                <label class="control-label" for="nome">Nome*</label>
+                <div ng-class="{'has-error': !pais.nome}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-flag"></i></span>
+                        <input placeholder="Insira o nome do país" maxlength="25" class="form-control" type="text" ng-model="pais.nome" id="nome" required/>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do ddi-->
+            <div class="col-md-2">
+                <label class="control-label" for="ddi">DDI</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                    <input placeholder="+000" maxlength="4" class="form-control" type="text" ng-model="pais.ddi" id="ddi"/>
+                </div>
+            </div>
+
+            <!--Input do sigla-->
+            <div class="col-md-2">
+                <label class="control-label" for="sigla">Sigla</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+                    <input placeholder="" maxlength="3" class="form-control" type="text" ng-model="pais.sigla" id="sigla"/>
+                </div>
+            </div>
+
+            <!--Input do Data de Cadastro-->
+            <div class="col-md-2">
+                <label class="control-label" for="dataCadastro">Data de Cadastro</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
+                    <input disabled data-date-format="dd/MM/yyyy" data-date-type="number" bs-datepicker class="form-control" type="text" ng-model="pais.dataCadastro" id="dataCadastro"/>
+                </div>
+            </div>
+
+            <!--Input do Data de Alteração-->
+            <div data-ng-show="pais.dataAlteracao" class="col-md-2">
+                <label class="control-label" for="dataAlteracao">Data de Alteração</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-refresh"></i></span>
+                    <input disabled data-date-format="dd/MM/yyyy" data-date-type="number" bs-datepicker class="form-control" type="text" ng-model="pais.dataAlteracao" id="dataAlteracao"/>
+                </div>
+            </div>
+
+            <!--Botões-->
+            <div class="col-md-12">
+                <div class="control-group">
+                    <br>
+                    <p ng-show="!pais.nome" class="font-style">Campos Obrigatórios (*)</p>
+                    <button id="update" class="btn btn-primary" type="submit" ng-disabled="!pais.nome">
+                        <span class="fa fa-refresh"></span> Atualizar
+                    </button>
+                    <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
+                        <span class="fa fa-arrow-left"></span> Voltar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
