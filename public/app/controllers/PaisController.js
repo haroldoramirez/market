@@ -3,7 +3,7 @@ angular.module('market')
 
       $scope.save = function() {
           Pais.save($scope.pais, function(data) {
-              toastr.success($scope.pais.nome, 'Salvo com sucesso.');
+              toastr.success('foi salvo com Sucesso.', 'O país: ' + $scope.pais.nome);
               $location.path('/paises');
           }, function(data) {
               toastr.error(data.data, 'Não foi possível Salvar.');
@@ -54,7 +54,7 @@ angular.module('market')
 
       $scope.update = function() {
           Pais.update({id:$routeParams.id}, $scope.pais, function(data) {
-              toastr.info($scope.pais.nome, 'Atualizado com Sucesso.');
+              toastr.info('foi atualizado com Sucesso.', 'O país: ' + $scope.pais.nome);
               $location.path('/paises');
           },function(data) {
              toastr.error(data.data, 'Não foi possível Atualizar.');
@@ -68,7 +68,7 @@ angular.module('market')
           });
 
           Pais.delete({id:$routeParams.id}, function() {
-              toastr.warning($scope.paisExcluido, 'Removido com Sucesso.');
+              toastr.warning('foi removido com Sucesso.', 'O país: ' + $scope.pais.nome);
               $modalInstance.close();
               $location.path('/paises');
           }, function(data) {

@@ -9,7 +9,7 @@ angular.module('market')
 
     $scope.save = function() {
         Cidade.save($scope.cidade, function(data) {
-            toastr.success($scope.cidade.nome, 'Salva com sucesso.');
+            toastr.success('foi salva com Sucesso.', 'A cidade: ' + $scope.cidade.nome);
             $location.path('/cidades');
         }, function(data) {
             toastr.error(data.data, 'Não foi possível Salvar.');
@@ -57,7 +57,7 @@ angular.module('market')
 
     $scope.update = function() {
         Cidade.update({id:$routeParams.id}, $scope.cidade, function(data) {
-            toastr.info($scope.cidade.nome, 'Atualizada com Sucesso.');
+            toastr.info('foi atualizada com Sucesso.', 'A cidade: ' + $scope.cidade.nome);
             $location.path('/cidades');
         },function(data) {
            toastr.error(data.data, 'Não foi possível Atualizar.');
@@ -68,8 +68,8 @@ angular.module('market')
         $scope.cidade = Cidade.get({id:$routeParams.id}, function(data) {
             $scope.cidadeExcluida = $scope.cidade.nome;
         });
-        Cidade.delete({id:$routeParams.id}, function() {
-            toastr.warning($scope.cidadeExcluida, 'Removida com Sucesso.');
+        Cidade.delete({id:$routeParams.id}, function() {;
+            toastr.warning('foi removida com Sucesso.', 'A cidade: ' + $scope.cidade.nome);
             $modalInstance.close();
             $location.path('/cidades');
         }, function(data) {

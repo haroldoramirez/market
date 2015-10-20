@@ -9,7 +9,7 @@ angular.module('market')
 
     $scope.save = function() {
         Estado.save($scope.estado, function(data) {
-            toastr.success($scope.estado.nome, 'Salvo com sucesso.');
+            toastr.success('foi salvo com Sucesso.', 'O estado: ' + $scope.estado.nome);
             $location.path('/estados');
         }, function(data) {
             toastr.error(data.data, 'Não foi possível Salvar.');
@@ -57,7 +57,7 @@ angular.module('market')
 
     $scope.update = function() {
         Estado.update({id:$routeParams.id}, $scope.estado, function(data) {
-            toastr.info($scope.estado.nome, 'Atualizado com Sucesso.');
+            toastr.info('foi atualizado com Sucesso.', 'O estado: ' + $scope.estado.nome);
             $location.path('/estados');
         },function(data) {
            toastr.error(data.data, 'Não foi possível Atualizar.');
@@ -69,7 +69,7 @@ angular.module('market')
             $scope.estadoExcluido = $scope.estado.nome;
         });
         Estado.delete({id:$routeParams.id}, function() {
-            toastr.warning($scope.estadoExcluido, 'Removido com Sucesso.');
+            toastr.warning('foi removido com Sucesso.', 'O estado: ' + $scope.estado.nome);
             $modalInstance.close();
             $location.path('/estados');
         }, function(data) {

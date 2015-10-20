@@ -3,7 +3,7 @@ angular.module('market')
 
     $scope.save = function() {
         Usuario.save($scope.usuario, function(data) {
-            toastr.success($scope.usuario.email, 'Salvo com Sucesso.');
+            toastr.success('foi salvo com Sucesso.', 'O usuário: ' + $scope.usuario.email);
             $location.path('/usuarios');
         }, function(data) {
             toastr.error(data.data, 'Não foi possível Salvar.');
@@ -53,7 +53,7 @@ angular.module('market')
 
     $scope.update = function() {
         Usuario.update({id:$routeParams.id}, $scope.usuario, function(data) {
-            toastr.info($scope.usuario.email, 'Atualizado com Sucesso.');
+            toastr.info('foi atualizado com Sucesso.', 'O usuário: ' + $scope.usuario.email);
             $location.path('/usuarios');
         },function(data) {
            toastr.error(data.data, 'Não foi possível Atualizar.');
@@ -67,7 +67,7 @@ angular.module('market')
       });
 
         Usuario.delete({id:$routeParams.id}, function() {
-            toastr.warning($scope.usuarioExcluido, 'Removido com Sucesso.');
+            toastr.warning('foi removido com Sucesso.', 'O usuário: ' + $scope.usuario.email);
             $modalInstance.close();
             $location.path('/usuarios');
         }, function(data) {
