@@ -1,15 +1,5 @@
 <div class="well">
 
-    <!-- Título da Página-->
-    <legend>
-        <h1 class="font-style">
-            <i class="fa fa-users"></i> Detalhe do Usuário
-            <button type="button" class="btn btn-danger pull-right" ng-click="open('sm')">
-                <span class="fa fa-trash"></span> Remover
-            </button>
-        </h1>
-    </legend>
-
     <!-- Modal de confirmação-->
     <script type="text/ng-template" id="modalConfirmacao.html">
         <div class="modal-header">
@@ -24,75 +14,40 @@
         </div>
     </script>
 
-    <form ng-init="init()" class="form-horizontal" ng-submit="update()">
-        <div class="form-group">
-
-            <!--Input do Email-->
-            <div class="col-md-3">
-                <label class="control-label" for="usuario.email">Email *</label>
-                <div ng-class="{'has-error': !usuario.email}">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input placeholder="Insira o email" maxlength="30" class="form-control" type="text" ng-model="usuario.email" id="usuario.email" required/>
-                    </div>
-                </div>
+    <!-- Título da Página-->
+    <legend>
+        <h1 class="font-style">
+            <i class="fa fa-users"></i> Detalhe do Usuário
+            <div class="pull-right">
+                <a type="button" class="btn btn-primary" href="#/usuarios/editar/{{usuario.id}}">
+                    <span class="fa fa-refresh"></span> Editar
+                </a>
+                <button type="button" class="btn btn-warning" ng-click="open('sm')">
+                    <span class="fa fa-trash"></span> Remover
+                </button>
+                <a class="btn btn-default" href="#/usuarios">
+                    <span class="fa fa-arrow-left"></span> Voltar
+                </a>
             </div>
+        </h1>
+    </legend>
 
-            <!--Input do Senha-->
-            <div class="col-md-2">
-                <label class="control-label" for="senha">Senha *</label>
-                <div ng-class="{'has-error': !usuario.senha}">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                        <input placeholder="insira a senha" maxlength="16" class="form-control" type="password" ng-model="usuario.senha" id="senha"/>
-                    </div>
-                </div>
-            </div>
-
-            <!--Input do Privilégio-->
-            <div class="col-md-3">
-                <label class="control-label">Privilégio *</label>
-                <div ng-class="{'has-error': !usuario.privilegio}">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
-                        <select disabled ng-model="usuario.privilegio" class="form-control" id="privilegio">
-                            <option value=1>1 - Operador</option>
-                            <option value=2>2 - Administrador</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!--Input do Data de Cadastro-->
-            <div data-ng-show="usuario.dataCadastro" class="col-md-2">
-                <label class="control-label" for="dataCadastro">Data de Cadastro</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
-                    <input disabled data-date-format="dd/MM/yyyy" data-date-type="number" bs-datepicker class="form-control" type="text" ng-model="usuario.dataCadastro" id="dataCadastro"/>
-                </div>
-            </div>
-
-            <!--Input do Data de Alteração-->
-            <div data-ng-show="usuario.dataAlteracao" class="col-md-2">
-                <label class="control-label" for="dataAlteracao">Data de Alteração</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-refresh"></i></span>
-                    <input disabled data-date-format="dd/MM/yyyy" data-date-type="number" bs-datepicker class="form-control" type="text" ng-model="usuario.dataAlteracao" id="dataAlteracao"/>
-                </div>
-            </div>
-
-            <!--Botões-->
-            <div class="col-md-12">
-                <br>
-                <div class="control-group">
-                    <button type="submit" id="save" class="btn btn-primary" ng-disabled="!usuario.email || !usuario.senha || !usuario.privilegio">
-                        <span class="fa fa-refresh"></span> Atualizar
-                    </button>
-                    <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
-                        <span class="fa fa-arrow-left"></span> Voltar
-                    </button>
-                </div>
-            </div>
+    <form ng-init="init()">
+        <div class="item-form width-600 margin-bottom-15">
+            <label class="display-block strong">Email/Login</label>
+            <a class="display-block margin-left-027em">{{usuario.email}}</a>
+        </div>
+        <div class="item-form width-600 margin-bottom-15">
+            <label class="display-block strong">Privilégio</label>
+            <a class="display-block margin-left-027em">{{usuario.privilegio}}</a>
+        </div>
+        <div class="item-form width-600 margin-bottom-15">
+            <label class="display-block strong">Data/Hora de Cadastro</label>
+            <a type="date" class="display-block margin-left-027em">{{usuario.dataCadastro | date:'dd/MM/yyyy : HH:mm'}}</a>
+        </div>
+        <div data-ng-show="usuario.dataAlteracao" class="item-form width-600 margin-bottom-15">
+            <label class="display-block strong">Data/Hora de Alteração</label>
+            <a class="display-block margin-left-027em">{{usuario.dataAlteracao | date:'dd/MM/yyyy : HH:mm'}}</a>
         </div>
     </form>
 </div>

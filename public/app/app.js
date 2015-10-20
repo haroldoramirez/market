@@ -24,6 +24,10 @@ angular
                 templateUrl: '/assets/app/views/paises/detail.html',
                 controller: 'PaisDetailController'
             })
+            .when('/paises/editar/:id', {
+                templateUrl: '/assets/app/views/paises/edit.html',
+                controller: 'PaisEditController'
+            })
             .when('/paises', {
                 templateUrl: '/assets/app/views/paises/list.html',
                 controller: 'PaisListController'
@@ -47,6 +51,10 @@ angular
             .when('/usuarios/detalhe/:id', {
                 templateUrl: '/assets/app/views/usuarios/detail.html',
                 controller: 'UsuarioDetailController'
+            })
+            .when('/usuarios/editar/:id', {
+                templateUrl: '/assets/app/views/usuarios/edit.html',
+                controller: 'UsuarioEditController'
             })
             .when('/usuarios', {
                 templateUrl: '/assets/app/views/usuarios/list.html',

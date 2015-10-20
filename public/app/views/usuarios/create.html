@@ -12,7 +12,7 @@
 
             <!--Input do Email-->
             <div class="col-md-3">
-                <label class="control-label" for="usuario.email">Email *</label>
+                <label class="control-label" for="usuario.email">Email/Login *</label>
                 <div ng-class="{'has-error': !usuario.email}">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -50,6 +50,7 @@
             <div class="col-md-12">
                 <div class="control-group">
                     <br>
+                    <p ng-show="!usuario.email || !usuario.senha || !usuario.privilegio" class="font-style">Campos Obrigatórios (*)</p>
                     <button id="save" class="btn btn-success" type="submit" ng-disabled="!usuario.email || !usuario.senha || !usuario.privilegio">
                         <span class="fa fa-floppy-o"></span> Salvar
                     </button>

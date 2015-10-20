@@ -51,15 +51,6 @@ angular.module('market')
         });
     };
 
-    $scope.update = function() {
-        Usuario.update({id:$routeParams.id}, $scope.usuario, function(data) {
-            toastr.info('foi atualizado com Sucesso.', 'O usuário: ' + $scope.usuario.email);
-            $location.path('/usuarios');
-        },function(data) {
-           toastr.error(data.data, 'Não foi possível Atualizar.');
-        });
-    };
-
     $scope.delete = function() {
 
       $scope.usuario = Usuario.get({id:$routeParams.id}, function(data) {
@@ -76,10 +67,6 @@ angular.module('market')
         });
     };
 
-    $scope.cancel = function() {
-       $location.path('/usuarios');
-    };
-
     $scope.open = function (size) {
 
         $modalInstance = $modal.open({
@@ -91,6 +78,25 @@ angular.module('market')
 
     $scope.cancelModal = function () {
         $modalInstance.dismiss('cancelModal');
+    };
+
+  }).controller('UsuarioEditController', function ($scope, $modal, $routeParams, $location, Usuario, toastr) {
+
+
+    $scope.init = function() {
+        $scope.usuario = Usuario.get({id:$routeParams.id}, function(data) {
+        },function(data) {
+            toastr.error(data.data);
+        });
+    };
+
+    $scope.update = function() {
+        Usuario.update({id:$routeParams.id}, $scope.usuario, function(data) {
+            toastr.info('foi atualizado com Sucesso.', 'O usuário: ' + $scope.usuario.email);
+            $location.path('/usuarios');
+        },function(data) {
+           toastr.error(data.data, 'Não foi possível Atualizar.');
+        });
     };
 
   });

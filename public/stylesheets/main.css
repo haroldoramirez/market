@@ -3,10 +3,223 @@
     text-shadow: 1px 1px 5px #ccc;
 }
 
-.pump {
-	color: #d9534f;
+.left,
+.left-clear {
+	float : left;
 }
 
-.pump-running {
-	color: #5cb85c;
+.right,
+.right-clear {
+	float : right;
+}
+
+.padding-15 {
+	padding : 15px;
+}
+
+.padding-10 {
+	padding : 10px;
+}
+
+.margin-0 {
+    margin : 0 !important;
+}
+
+.margin-15 {
+	margin : 15px;
+}
+
+.margin-top-15 {
+    margin-top : 15px;
+}
+
+.margin-top-25 {
+    margin-top : 25px;
+}
+
+.margin-right-15 {
+	margin-right : 15px;
+}
+
+.margin-bottom-15 {
+    margin-bottom : 15px;
+}
+
+.margin-bottom-25 {
+    margin-bottom : 25px;
+}
+
+.margin-left-15 {
+	margin-left : 15px;
+}
+
+.margin-top-0 {
+	margin-top : 0 !important;
+}
+
+.margin-right-0 {
+	margin-right : 0 !important;
+}
+
+.margin-bottom-0 {
+	margin-bottom : 0 !important;
+}
+
+.margin-left-0 {
+	margin-left : 0 !important;
+}
+
+.margin-027em {
+    margin : 0.27em;
+}
+
+.margin-top-027em {
+    margin-top : 0.27em;
+}
+
+.margin-left-027em {
+    margin-left : 0.27em;
+}
+
+.margin-right-027em {
+    margin-right : 0.27em;
+}
+
+.margin-bottom-027em {
+    margin-bottom : 0.27em;
+}
+
+.right-clear:after,
+.left-clear:after,
+.clearfix:after {
+    content     : ".";
+    display     : block;
+    clear       : both;
+    visibility  : hidden;
+    line-height : 0;
+    height      : 0;
+}
+
+.display-flex {
+	display : flex;
+}
+
+.display-none {
+	display : none;
+}
+
+.display-inline-block {
+	display : inline-block;
+}
+
+.display-block {
+	display : block;
+}
+
+.list-style-none {
+	list-style : none;
+}
+
+.width-full {
+	width : 100%;
+}
+
+.width-80 {
+    width : 80px;
+}
+
+.width-100 {
+    width : 100px;
+}
+
+.width-150 {
+	width : 150px;
+}
+
+.width-200 {
+	width : 200px;
+}
+
+.width-300 {
+    width : 300px;
+}
+
+.width-350 {
+    width : 350px;
+}
+
+.width-400 {
+    width : 400px;
+}
+
+.width-500 {
+	width : 500px;
+}
+
+.width-600 {
+	width : 600px;
+}
+
+.width-700 {
+	width : 700px;
+}
+
+.text-align-left {
+    text-align : left;
+}
+
+.text-align-center {
+    text-align : center;
+}
+
+.text-align-right {
+    text-align : right;
+}
+
+.cursor-default {
+    cursor : default;
+}
+
+.cursor-pointer {
+    cursor : pointer;
+}
+
+.shadow-hover {
+    box-shadow : 0 0 10px rgba( 0, 0 ,0 , 0.5);
+}
+
+.box-sizing {
+    box-sizing : border-box;
+}
+
+.strong {
+    font-weight : bold;
+}
+
+.position-absolute {
+    position : absolute;
+}
+
+.position-relative {
+    position : relative;
+}
+
+.border-top-0 {
+    border-top : none !important;
+}
+
+.border-right-0 {
+    border-right : none !important;
+}
+
+.border-bottom-0 {
+    border-bottom : none !important;
+}
+
+.border-left-0 {
+    border-left : none !important;
+}
+
+.zIndex100 {
+    z-index : 100;
 }

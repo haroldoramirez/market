@@ -52,15 +52,6 @@ angular.module('market')
           });
       };
 
-      $scope.update = function() {
-          Pais.update({id:$routeParams.id}, $scope.pais, function(data) {
-              toastr.info('foi atualizado com Sucesso.', 'O país: ' + $scope.pais.nome);
-              $location.path('/paises');
-          },function(data) {
-             toastr.error(data.data, 'Não foi possível Atualizar.');
-          });
-      };
-
       $scope.delete = function() {
 
           $scope.pais = Pais.get({id:$routeParams.id}, function(data) {
@@ -77,10 +68,6 @@ angular.module('market')
           });
       };
 
-      $scope.cancel = function() {
-         $location.path('/paises');
-      };
-
       $scope.open = function (size) {
 
           $modalInstance = $modal.open({
@@ -92,6 +79,25 @@ angular.module('market')
 
       $scope.cancelModal = function () {
           $modalInstance.dismiss('cancelModal');
+      };
+
+  }).controller('PaisEditController', function ($scope, $modal, $routeParams, $location, Pais, toastr) {
+
+
+      $scope.init = function() {
+          $scope.pais = Pais.get({id:$routeParams.id}, function(data) {
+          },function(data) {
+              toastr.error(data.data);
+          });
+      };
+
+      $scope.update = function() {
+          Pais.update({id:$routeParams.id}, $scope.pais, function(data) {
+              toastr.info('foi atualizado com Sucesso.', 'O país: ' + $scope.pais.nome);
+              $location.path('/paises');
+          },function(data) {
+             toastr.error(data.data, 'Não foi possível Atualizar.');
+          });
       };
 
   });
