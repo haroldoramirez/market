@@ -35,23 +35,23 @@
     <form ng-init="init()">
         <div class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">País</label>
-            <a class="display-block margin-left-027em">{{pais.nome}}</a>
+            <p class="display-block margin-left-027em">{{pais.nome}}</p>
         </div>
         <div class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">DDI</label>
-            <a class="display-block margin-left-027em">{{pais.ddi}}</a>
+            <p class="display-block margin-left-027em">{{pais.ddi}}</p>
         </div>
         <div class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">Sigla</label>
-            <a class="display-block margin-left-027em">{{pais.sigla}}</a>
+            <p class="display-block margin-left-027em">{{pais.sigla}}</p>
         </div>
         <div class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">Data/Hora de Cadastro</label>
-            <a type="date" class="display-block margin-left-027em">{{pais.dataCadastro | date:'dd/MM/yyyy : HH:mm'}}</a>
+            <p type="date" class="display-block margin-left-027em">{{pais.dataCadastro | date:'dd/MM/yyyy : HH:mm'}}</p>
         </div>
         <div data-ng-show="pais.dataAlteracao" class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">Data/Hora de Alteração</label>
-            <a class="display-block margin-left-027em">{{pais.dataAlteracao | date:'dd/MM/yyyy : HH:mm'}}</a>
+            <p class="display-block margin-left-027em">{{pais.dataAlteracao | date:'dd/MM/yyyy : HH:mm'}}</p>
         </div>
     </form>
 </div>

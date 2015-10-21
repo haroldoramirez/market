@@ -1,12 +1,5 @@
 <div class="well">
-    <legend>
-        <h1 class="font-style">
-            <i class="fa fa-flag-checkered"></i> Detalhe da Cidade
-            <button type="button" class="btn btn-danger pull-right" ng-click="open('sm')">
-                <span class="fa fa-trash"></span> Remover
-            </button>
-        </h1>
-    </legend>
+
     <script type="text/ng-template" id="modalConfirmacao.html">
         <div class="modal-header">
             <h3 align="center" class="modal-title">Confirmação:</h3>
@@ -19,73 +12,45 @@
             <button class="btn btn-default" ng-click="cancelModal()"><span class="fa fa-times"></span> Cancelar</button>
         </div>
     </script>
-    <form ng-init="init()" class="form-horizontal" ng-submit="update()">
-        <div class="form-group">
 
-            <!--Input do Nome-->
-            <div class="col-md-3">
-                <label class="control-label" for="nome">Nome *</label>
-                <div ng-class="{'has-error': !cidade.nome}">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-flag-checkered"></i></span>
-                        <input placeholder="Insira o nome da cidade" maxlength="25" class="form-control" type="text" ng-model="cidade.nome" id="nome" required/>
-                    </div>
-                </div>
+    <legend>
+        <h1 class="font-style">
+            <i class="fa fa-flag-checkered"></i> Detalhe da Cidade
+            <div class="pull-right">
+                <a type="button" class="btn btn-primary" href="#/cidades/editar/{{cidade.id}}">
+                    <span class="fa fa-refresh"></span> Editar
+                </a>
+                <button type="button" class="btn btn-warning" ng-click="open('sm')">
+                    <span class="fa fa-trash"></span> Remover
+                </button>
+                <a class="btn btn-default" href="#/cidades">
+                    <span class="fa fa-arrow-left"></span> Voltar
+                </a>
             </div>
+        </h1>
+    </legend>
 
-            <!--Input do ddd-->
-            <div class="col-md-2">
-                <label class="control-label" for="ddd">DDD</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                    <input placeholder="000" maxlength="4" class="form-control" type="text" ng-model="cidade.ddd" id="ddd"/>
-                </div>
-            </div>
-
-            <!--Input do Estado-->
-            <div class="col-lg-3">
-                <label class="control-label" for="estado">Estado *</label>
-                <div ng-class="{'has-error': !cidade.estado}">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-flag-o"></i></span>
-                        <select ng-model="cidade.estado" class="form-control" ng-options="estado.nome for estado in estados" id="estado">
-                            <option disabled ng-show="!cidade.estado.id" value="">{{cidade.estado.nome}}</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!--Input do Data de Cadastro-->
-            <div class="col-md-2">
-                <label class="control-label" for="dataCadastro">Data de Cadastro</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
-                    <input disabled data-date-format="dd/MM/yyyy" data-date-type="number" bs-datepicker class="form-control" type="text" ng-model="cidade.dataCadastro" id="dataCadastro"/>
-                </div>
-            </div>
-
-            <!--Input do Data de Alteração-->
-            <div data-ng-show="cidade.dataAlteracao" class="col-md-2">
-                <label class="control-label" for="dataAlteracao">Data de Alteração</label>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-refresh"></i></span>
-                    <input disabled data-date-format="dd/MM/yyyy" data-date-type="number" bs-datepicker class="form-control" type="text" ng-model="cidade.dataAlteracao" id="dataAlteracao"/>
-                </div>
-            </div>
-
-            <!--Botões-->
-            <div class="col-md-12">
-                <div class="control-group">
-                    <br>
-                    <p ng-show="!cidade.nome || !cidade.estado.id" class="font-style">Campos Obrigatórios (*)</p>
-                    <button id="update" class="btn btn-primary" type="submit" ng-disabled="!cidade.nome || !cidade.estado.id">
-                        <span class="fa fa-refresh"></span> Atualizar
-                    </button>
-                    <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
-                        <span class="fa fa-arrow-left"></span> Voltar
-                    </button>
-                </div>
-            </div>
+    <form ng-init="init()">
+        <div class="item-form width-600 margin-bottom-15">
+            <label class="display-block strong">Cidade</label>
+            <p class="display-block margin-left-027em">{{cidade.nome}}</p>
+        </div>
+        <div class="item-form width-600 margin-bottom-15">
+            <label class="display-block strong">DDD</label>
+            <p class="display-block margin-left-027em">{{cidade.ddd}}</p>
+        </div>
+        <div class="item-form width-600 margin-bottom-15">
+            <label class="display-block strong">Estado</label>
+            <p class="display-block margin-left-027em">{{cidade.estado.nome}}</p>
+        </div>
+        <div class="item-form width-600 margin-bottom-15">
+            <label class="display-block strong">Data/Hora de Cadastro</label>
+            <p type="date" class="display-block margin-left-027em">{{cidade.dataCadastro | date:'dd/MM/yyyy : HH:mm'}}</p>
+        </div>
+        <div data-ng-show="cidade.dataAlteracao" class="item-form width-600 margin-bottom-15">
+            <label class="display-block strong">Data/Hora de Alteração</label>
+            <p class="display-block margin-left-027em">{{cidade.dataAlteracao | date:'dd/MM/yyyy : HH:mm'}}</p>
         </div>
     </form>
+
 </div>

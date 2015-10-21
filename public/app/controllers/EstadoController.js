@@ -55,31 +55,18 @@ angular.module('market')
         });
     };
 
-    $scope.update = function() {
-        Estado.update({id:$routeParams.id}, $scope.estado, function(data) {
-            toastr.info('foi atualizado com Sucesso.', 'O estado: ' + $scope.estado.nome);
-            $location.path('/estados');
-        },function(data) {
-           toastr.error(data.data, 'Não foi possível Atualizar.');
-        });
-    };
-
     $scope.delete = function() {
         $scope.estado = Estado.get({id:$routeParams.id}, function(data) {
             $scope.estadoExcluido = $scope.estado.nome;
         });
         Estado.delete({id:$routeParams.id}, function() {
-            toastr.warning('foi removido com Sucesso.', 'O estado: ' + $scope.estado.nome);
+            toastr.warning('foi removido com Sucesso.', 'O estado: ' + $scope.estadoExcluido);
             $modalInstance.close();
             $location.path('/estados');
         }, function(data) {
             $modalInstance.close();
             toastr.error(data.data, 'Não foi possível Remover.');
         });
-    };
-
-    $scope.cancel = function() {
-       $location.path('/estados');
     };
 
     $scope.open = function (size) {
@@ -93,6 +80,26 @@ angular.module('market')
 
     $scope.cancelModal = function () {
         $modalInstance.dismiss('cancelModal');
+    };
+
+  }).controller('EstadoEditController', function ($scope, $modal, $routeParams, $location, Estado, Pais, toastr) {
+
+
+    $scope.init = function() {
+        $scope.estado = Estado.get({id:$routeParams.id}, function(data) {
+        $scope.paises = Pais.getAll();
+        },function(data) {
+            toastr.error(data.data);
+        });
+    };
+
+    $scope.update = function() {
+        Estado.update({id:$routeParams.id}, $scope.estado, function(data) {
+            toastr.info('foi atualizado com Sucesso.', 'O estado: ' + $scope.estado.nome);
+            $location.path('/estados');
+        },function(data) {
+           toastr.error(data.data, 'Não foi possível Atualizar.');
+        });
     };
 
   });

@@ -20,7 +20,7 @@ angular.module('market')
         $location.path('/cidades');
     };
 
-  }).controller('CidadeListController', function ($scope, Cidade, $routeParams) {
+  }).controller('CidadeListController', function ($scope, Cidade, toastr, $routeParams) {
 
     $scope.init = function() {
         $scope.nomeFiltro = '';
@@ -31,7 +31,6 @@ angular.module('market')
         });
     };
 
-    //* filtra por nome da cidade *//
     $scope.busca = function() {
 
        if ($scope.nomeFiltro) {
@@ -55,21 +54,12 @@ angular.module('market')
         });
     };
 
-    $scope.update = function() {
-        Cidade.update({id:$routeParams.id}, $scope.cidade, function(data) {
-            toastr.info('foi atualizada com Sucesso.', 'A cidade: ' + $scope.cidade.nome);
-            $location.path('/cidades');
-        },function(data) {
-           toastr.error(data.data, 'Não foi possível Atualizar.');
-        });
-    };
-
     $scope.delete = function() {
         $scope.cidade = Cidade.get({id:$routeParams.id}, function(data) {
             $scope.cidadeExcluida = $scope.cidade.nome;
         });
         Cidade.delete({id:$routeParams.id}, function() {;
-            toastr.warning('foi removida com Sucesso.', 'A cidade: ' + $scope.cidade.nome);
+            toastr.warning('foi removida com Sucesso.', 'A cidade: ' + $scope.cidadeExcluida);
             $modalInstance.close();
             $location.path('/cidades');
         }, function(data) {
@@ -78,15 +68,7 @@ angular.module('market')
         });
     };
 
-    $scope.cancel = function() {
-       $location.path('/cidades');
-    };
-
     $scope.open = function (size) {
-
-        $scope.cidade = Cidade.get({id:$routeParams.id}, function(data) {
-            $scope.cidadeExcluida = $scope.cidade.nome;
-        });
 
         $modalInstance = $modal.open({
               templateUrl: 'modalConfirmacao.html',
@@ -97,6 +79,26 @@ angular.module('market')
 
     $scope.cancelModal = function () {
         $modalInstance.dismiss('cancelModal');
+    };
+
+  }).controller('CidadeEditController', function ($scope, $modal, $routeParams, $location, Cidade, Estado, toastr) {
+
+
+    $scope.init = function() {
+        $scope.cidade = Cidade.get({id:$routeParams.id}, function(data) {
+        $scope.estados = Estado.getAll();
+        },function(data) {
+            toastr.error(data.data);
+        });
+    };
+
+    $scope.update = function() {
+        Cidade.update({id:$routeParams.id}, $scope.cidade, function(data) {
+            toastr.info('foi atualizada com Sucesso.', 'A cidade: ' + $scope.cidade.nome);
+            $location.path('/cidades');
+        },function(data) {
+           toastr.error(data.data, 'Não foi possível Atualizar.');
+        });
     };
 
   });

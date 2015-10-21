@@ -58,7 +58,7 @@ angular.module('market')
       });
 
         Usuario.delete({id:$routeParams.id}, function() {
-            toastr.warning('foi removido com Sucesso.', 'O usuário: ' + $scope.usuario.email);
+            toastr.warning('foi removido com Sucesso.', 'O usuário: ' + $scope.usuarioExcluido);
             $modalInstance.close();
             $location.path('/usuarios');
         }, function(data) {

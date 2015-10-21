@@ -1,0 +1,39 @@
+<div class="well">
+
+    <!-- Header-->
+    <legend>
+        <h1 class="font-style">
+            <i class="fa fa-flag-checkered"></i> Lista de Clientes<a class="btn btn-success pull-right" href="#/clientes/novo">
+            <span class="fa fa-plus"></span> Cadastrar Cliente</a>
+        </h1>
+    </legend>
+
+    <!--Input de Busca-->
+    <div class="col-md-5 input-group">
+        <input ng-model="nomeFiltro" type="search" class="form-control" placeholder="digite o nome ou o cpf do cliente">
+            <span class="input-group-btn">
+                <button ng-disabled="!nomeFiltro" class="btn btn-primary" ng-click="busca();"><span class="fa fa-search"></span> Filtrar</button>
+                <button class="btn btn-default" ng-click="init();">Limpar</button>
+            </span>
+    </div>
+
+    <div class="pull-right">
+        <h4 class="font-style">Total de <b>{{quantidade}}</b> Registros</h4>
+    </div>
+
+    <h4 class="font-style" ng-show="clientes.length == 0">Nenhum registro encontrado</h4>
+
+    <!--Tabela-->
+    <table ng-show="clientes.length" ng-init="init()" class="table-striped table table-hover table-bordered">
+        <tr>
+            <th>Nome</th>
+            <th>Cpf</th>
+            <th>Cidade</th>
+        </tr>
+        <tr ng-repeat="cliente in clientes">
+            <td><b><a href="#/clientes/detalhe/{{cliente.id}}">{{cliente.nome}}</a></b></td>
+            <td>{{cliente.cpf}}</td>
+            <td>{{cliente.cidade.nome}}</td>
+        </tr>
+    </table>
+</div>

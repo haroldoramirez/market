@@ -1,0 +1,78 @@
+<div class="well">
+
+    <!-- Título da Página-->
+    <legend>
+        <h1 class="font-style">
+            <i class="fa fa-flag-o"></i> Editar Estado
+        </h1>
+    </legend>
+
+    <form ng-init="init()" class="form-horizontal" ng-submit="update()">
+        <div class="form-group">
+
+            <!--Input do Nome-->
+            <div class="col-md-3">
+                <label class="control-label" for="nome">Nome *</label>
+                <div ng-class="{'has-error': !estado.nome}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-flag-o"></i></span>
+                        <input placeholder="Insira o nome do estado" maxlength="25" class="form-control" type="text" ng-model="estado.nome" id="nome" required/>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do uf-->
+            <div class="col-md-1">
+                <label class="control-label" for="uf">UF</label>
+                <div class="input-group">
+                    <input placeholder="" maxlength="3" class="form-control" type="text" ng-model="estado.uf" id="uf"/>
+                </div>
+            </div>
+
+            <!--Input do País-->
+            <div class="col-md-2">
+                <label class="control-label" for="pais">País *</label>
+                <div ng-class="{'has-error': !estado.pais}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-flag"></i></span>
+                        <select ng-model="estado.pais" class="form-control" ng-options="pais.nome for pais in paises" id="pais">
+                            <option disabled ng-show="!estado.pais.id" value="">{{estado.pais.nome}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do Data de Cadastro-->
+            <div class="col-md-2">
+                <label class="control-label" for="dataCadastro">Data de Cadastro</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
+                    <input disabled data-date-format="dd/MM/yyyy" data-date-type="number" bs-datepicker class="form-control" type="text" ng-model="estado.dataCadastro" id="dataCadastro"/>
+                </div>
+            </div>
+
+            <!--Input do Data de Alteração-->
+            <div data-ng-show="estado.dataAlteracao" class="col-md-2">
+                <label class="control-label" for="dataAlteracao">Data de Alteração</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-refresh"></i></span>
+                    <input disabled data-date-format="dd/MM/yyyy" data-date-type="number" bs-datepicker class="form-control" type="text" ng-model="estado.dataAlteracao" id="dataAlteracao"/>
+                </div>
+            </div>
+
+            <!--Botões-->
+            <div class="col-md-12">
+                <div class="control-group">
+                    <br>
+                    <p ng-show="!estado.nome || !estado.pais.id" class="font-style">Campos Obrigatórios (*)</p>
+                    <button id="update" class="btn btn-primary" type="submit" ng-disabled="!estado.nome || !estado.pais.id">
+                        <span class="fa fa-refresh"></span> Atualizar
+                    </button>
+                    <a class="btn btn-default" href="#/estados/detalhe/{{estado.id}}">
+                        <span class="fa fa-arrow-left"></span> Voltar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

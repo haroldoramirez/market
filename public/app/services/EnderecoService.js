@@ -30,4 +30,12 @@ angular.module('market')
            update: {method: 'PUT', url: BaseUrl + '/cidades/:id', isArray: false},
            getFiltroCidade: {method: 'GET', url: BaseUrl + '/cidades/filtro/:filtro', isArray: true}
         });
+    }])
+    .service('Cliente',['$resource', 'BaseUrl',
+      function($resource, BaseUrl){
+        return $resource(BaseUrl + '/clientes/:id', {}, {
+           getAll: {method: 'GET', url: BaseUrl + '/clientes', isArray: true},
+           update: {method: 'PUT', url: BaseUrl + '/clientes/:id', isArray: false},
+           getFiltroCliente: {method: 'GET', url: BaseUrl + '/clientes/filtro/:filtro', isArray: true}
+        });
     }]);

@@ -35,19 +35,19 @@
     <form ng-init="init()">
         <div class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">Email/Login</label>
-            <a class="display-block margin-left-027em">{{usuario.email}}</a>
+            <p class="display-block margin-left-027em">{{usuario.email}}</p>
         </div>
         <div class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">Privilégio</label>
-            <a class="display-block margin-left-027em">{{usuario.privilegio}}</a>
+            <p class="display-block margin-left-027em">{{usuario.privilegio}}</p>
         </div>
         <div class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">Data/Hora de Cadastro</label>
-            <a type="date" class="display-block margin-left-027em">{{usuario.dataCadastro | date:'dd/MM/yyyy : HH:mm'}}</a>
+            <p type="date" class="display-block margin-left-027em">{{usuario.dataCadastro | date:'dd/MM/yyyy : HH:mm'}}</p>
         </div>
         <div data-ng-show="usuario.dataAlteracao" class="item-form width-600 margin-bottom-15">
             <label class="display-block strong">Data/Hora de Alteração</label>
-            <a class="display-block margin-left-027em">{{usuario.dataAlteracao | date:'dd/MM/yyyy : HH:mm'}}</a>
+            <p class="display-block margin-left-027em">{{usuario.dataAlteracao | date:'dd/MM/yyyy : HH:mm'}}</p>
         </div>
     </form>
 </div>

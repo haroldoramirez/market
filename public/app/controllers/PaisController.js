@@ -59,7 +59,7 @@ angular.module('market')
           });
 
           Pais.delete({id:$routeParams.id}, function() {
-              toastr.warning('foi removido com Sucesso.', 'O país: ' + $scope.pais.nome);
+              toastr.warning('foi removido com Sucesso.', 'O país: ' + $scope.paisExcluido);
               $modalInstance.close();
               $location.path('/paises');
           }, function(data) {

@@ -40,6 +40,10 @@ angular
                 templateUrl: '/assets/app/views/estados/detail.html',
                 controller: 'EstadoDetailController'
             })
+            .when('/estados/editar/:id', {
+                templateUrl: '/assets/app/views/estados/edit.html',
+                controller: 'EstadoEditController'
+            })
             .when('/estados', {
                 templateUrl: '/assets/app/views/estados/list.html',
                 controller: 'EstadoListController'
@@ -68,9 +72,29 @@ angular
                 templateUrl: '/assets/app/views/cidades/detail.html',
                 controller: 'CidadeDetailController'
             })
+            .when('/cidades/editar/:id', {
+                templateUrl: '/assets/app/views/cidades/edit.html',
+                controller: 'CidadeEditController'
+            })
             .when('/cidades', {
                 templateUrl: '/assets/app/views/cidades/list.html',
                 controller: 'CidadeListController'
+            })
+            .when('/clientes/novo', {
+                templateUrl: '/assets/app/views/clientes/create.html',
+                controller: 'ClienteCreateController'
+            })
+            .when('/clientes/detalhe/:id', {
+                templateUrl: '/assets/app/views/clientes/detail.html',
+                controller: 'ClienteDetailController'
+            })
+            .when('/clientes/editar/:id', {
+                templateUrl: '/assets/app/views/clientes/edit.html',
+                controller: 'ClienteEditController'
+            })
+            .when('/clientes', {
+                templateUrl: '/assets/app/views/clientes/list.html',
+                controller: 'ClienteListController'
             });
    }).config(function(toastrConfig) {
      angular.extend(toastrConfig, {
