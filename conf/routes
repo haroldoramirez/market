@@ -47,5 +47,13 @@ GET     /cidades                     controllers.CidadeController.buscaTodos()
 DELETE  /cidades/:id                 controllers.CidadeController.remover(id:Long)
 GET     /cidades/filtro/:filtro      controllers.CidadeController.filtra(filtro:String)
 
+# Cliente
+POST    /clientes                     controllers.ClienteController.inserir()
+PUT     /clientes/:id                 controllers.ClienteController.atualizar(id:Long)
+GET     /clientes/:id                 controllers.ClienteController.buscaPorId(id:Long)
+GET     /clientes                     controllers.ClienteController.buscaTodos()
+DELETE  /clientes/:id                 controllers.ClienteController.remover(id:Long)
+GET     /clientes/filtro/:filtro      controllers.ClienteController.filtra(filtro:String)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

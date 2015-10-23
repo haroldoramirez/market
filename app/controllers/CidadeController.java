@@ -48,6 +48,7 @@ public class CidadeController extends Controller {
         Cidade cidadeBusca = Ebean.find(Cidade.class, id);
 
         if (cidadeBusca == null) {
+            Logger.warn("Cidade não encontrada.");
             return notFound("Cidade não encontrada.");
         }
 
