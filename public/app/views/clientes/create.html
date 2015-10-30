@@ -10,17 +10,169 @@
         <div class="form-group">
 
             <!--Input do Nome-->
-            <div class="col-md-3">
-                <label class="control-label" for="nome">Nome *</label>
-                <div ng-class="{'has-error': !cliente.nome}">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-flag"></i></span>
-                        <input placeholder="Insira o nome do cliente" maxlength="35" class="form-control" type="text" ng-model="cliente.nome" id="nome" required/>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <label class="control-label" for="nome">Nome *</label>
+                        <div ng-class="{'has-error': !cliente.nome}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                <input placeholder="Insira o nome do cliente" maxlength="35" class="form-control maiuscula" type="text" ng-model="cliente.nome" id="nome" required/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!--fa fa-shopping-cartBotões-->
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <button class="btn btn-default" type="button">Físico</button>
+                    <button class="btn btn-default" type="button">Jurídico</button>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><b>Dados Pessoais</b></label>
+                    </div>
+                    <div class="panel-body">
+
+                        <!--Input do Cpf-->
+                        <div class="col-md-3">
+                            <label class="control-label" for="cpf">Pessoa Física *</label>
+                            <div ng-class="{'has-error': !cliente.cpf}">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><b>CPF</b></span>
+                                    <input ui-br-cpf-mask placeholder="___.___.___-__" maxlength="16" class="form-control" type="text" ng-model="cliente.cpf" id="cpf"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Input do Rg-->
+                        <div class="col-md-3">
+                            <label class="control-label" for="rg">Registro Geral</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><b>RG</b></span>
+                                <input placeholder="000" maxlength="25" class="form-control" type="text" ng-model="cliente.rg" id="rg"/>
+                            </div>
+                        </div>
+
+                        <!--Input de Data de Nascimento-->
+                        <div class="col-md-4">
+                            <label class="control-label">Data de Nascimento</label>
+                            <div ng-class="{'has-error': cliente.dataNascimento.$invalid}">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input placeholder="dd/mm/aaaa" type="text" class="form-control" ng-model="cliente.dataNascimento" data-date-format="dd/MM/yyyy" data-date-type="number" data-max-date="02/10/96" data-autoclose="1" name="dataNascimento" bs-datepicker>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label><b>Endereço</b></label>
+                    </div>
+                    <div class="panel-body">
+                        <!--Input do Rua-->
+                        <div class="col-md-6">
+                            <label class="control-label" for="rua">Logradouro *</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-road"></i></span>
+                                <input placeholder="Insira o logradouro" maxlength="70" class="form-control maiuscula" type="text" ng-model="cliente.rua" id="rua"/>
+                            </div>
+                        </div>
+                        <!--Input do Numero-->
+                        <div class="col-md-2">
+                            <label class="control-label">Número *</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><b>Nº</b></span>
+                                <input ui-number-mask="3" placeholder="0.000" type="text" name="numero" maxlength="6" class="form-control" ng-model="cliente.numero" id="numero"/>
+                            </div>
+                        </div>
+                        <!--Input do Bairro-->
+                        <div class="col-md-4">
+                            <label class="control-label">Bairro *</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                                <input placeholder="insira o bairro" type="text" name="bairro" maxlength="20" class="form-control maiuscula" ng-model="cliente.bairro" id="bairro"/>
+                            </div>
+                        </div>
+                        <!--Input do CEP-->
+                        <div class="col-md-3">
+                            <label class="control-label" for="cep">Código de Endereçamento Postal</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><b>CEP</b></span>
+                                <input ui-br-cep-mask placeholder="_____-___" maxlength="16" class="form-control" type="text" ng-model="cliente.cep" id="cep"/>
+                            </div>
+                        </div>
+                        <!--Input do Complemento-->
+                        <div class="col-md-4">
+                            <label class="control-label" for="complemento">Complemento</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                <input placeholder="Casa/Apartamento/Conjunto" maxlength="40" class="form-control maiuscula" type="text" ng-model="cliente.complemento" id="complemento"/>
+                            </div>
+                        </div>
+                        <!--Input do Cidade-->
+                        <div class="col-md-3">
+                            <label class="control-label" for="cidade">Cidade *</label>
+                            <div ng-class="{'has-error': !cliente.cidade}">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-flag-checkered"></i></span>
+                                    <select ng-model="cliente.cidade" class="form-control" ng-options="cidade.nome for cidade in cidades" id="cidade">
+                                        <option value="">Selecione</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Input do Email-->
+                        <div class="col-md-4">
+                            <label class="control-label" for="email">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                <input placeholder="email@exemplo.com" maxlength="35" class="form-control" type="email" ng-model="cliente.email" id="email"/>
+                            </div>
+                        </div>
+
+                        <!--Input do Telefone-->
+                        <div class="col-md-3">
+                            <label class="control-label" for="telefone">Telefone</label>
+                            <div ng-class="{'has-error': !cliente.telefone}">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input ui-br-phone-number placeholder="(__) ____-____" maxlength="15" class="form-control telefone" type="text" ng-model="cliente.telefone" id="telefone" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Input do Celular-->
+                        <div class="col-md-3">
+                            <label class="control-label" for="celular">Celular</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                                <input ui-br-phone-number placeholder="(__) ____-____" maxlength="15" class="form-control" type="text" ng-model="cliente.celular" id="celular"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input de Observações-->
+            <div class="col-md-12">
+                <label class="control-label" for="observacoes">Observações</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                    <textarea maxlength="254" placeholder="Informações Adicionais" style="overflow:auto;resize:none" class="form-control" ng-model="cliente.observacoes" id="observacoes">
+
+                    </textarea>
+                </div>
+            </div>
+
+            <!--Botões-->
             <div class="col-md-12">
                 <div class="control-group">
                     <br>
