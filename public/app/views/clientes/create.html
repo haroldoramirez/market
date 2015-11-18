@@ -10,7 +10,7 @@
         <div class="form-group">
 
             <!--Input do Nome-->
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <label class="control-label" for="nome">Nome *</label>
@@ -24,18 +24,21 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="pull-right">
-                    <div class="checkbox">
+            <!-- Pessoa-->
+            <div class="col-md-3 pull-right">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p><b>Pessoa:</b></p>
                         <label>
-                            <input type="checkbox" value="remember-me"> Física
+                            <input type="radio" name="pessoa" value="FISICA"> Física
                         </label>
                         <label>
-                            <input type="checkbox" value="remember-me"> Jurídica
+                            <input type="radio" name="pessoa" value="JURIDICA"> Jurídica
                         </label>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -44,7 +47,7 @@
                     <div class="panel-body">
 
                         <!--Input do Cpf-->
-                        <div class="col-md-3">
+                        <div class="col-md-3 cpf">
                             <label class="control-label" for="cpf">Pessoa Física *</label>
                             <div ng-class="{'has-error': !cliente.cpf}">
                                 <div class="input-group">
@@ -55,11 +58,11 @@
                         </div>
 
                         <!--Input do Rg-->
-                        <div class="col-md-3">
+                        <div class="col-md-3 rg">
                             <label class="control-label" for="rg">Registro Geral</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><b>RG</b></span>
-                                <input placeholder="000" maxlength="25" class="form-control" type="text" ng-model="cliente.rg" id="rg"/>
+                                <input placeholder="000" maxlength="15" class="form-control" type="text" ng-model="cliente.rg" id="rg"/>
                             </div>
                         </div>
 
@@ -69,11 +72,10 @@
                             <div ng-class="{'has-error': cliente.dataNascimento.$invalid}">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input placeholder="dd/mm/aaaa" type="text" class="form-control" ng-model="cliente.dataNascimento" data-date-format="dd/MM/yyyy" data-date-type="number" data-max-date="02/10/96" data-autoclose="1" name="dataNascimento" bs-datepicker>
+                                    <input placeholder="dd/mmmm/aaaa" type="text" class="form-control" ng-model="cliente.dataNascimento" data-date-format="dd/MMMM/yyyy" data-date-type="number" data-max-date="02/10/96" data-autoclose="1" name="dataNascimento" bs-datepicker>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

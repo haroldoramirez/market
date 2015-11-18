@@ -89,7 +89,7 @@ public class UsuarioController extends Controller {
             Ebean.update(usuario);
             Logger.info("Usuario atualizado.");
         } catch (Exception e) {
-            return badRequest("Erro interno de sistema");
+            return badRequest("Erro interno de sistema!");
         }
 
         return ok(Json.toJson(usuario));
@@ -164,7 +164,7 @@ public class UsuarioController extends Controller {
         }
 
         if (usuario.getPadraoDoSistema()) {
-            return badRequest("Usuário padrão do sistema");
+            return badRequest("Usuário padrão do sistema!");
         }
 
         if (usuarioAtual.getEmail().equals(usuario.getEmail())) {

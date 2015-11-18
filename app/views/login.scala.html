@@ -17,16 +17,25 @@
 </head>
 <body>
     <div class="container">
+        <div class="form-signin well well-sm">
+            @form(routes.LoginController.autenticar()) {
+            <h2 class="form-signin-heading text-center">Autenticação</h2>
 
-        <form class="form-signin">
-            <h2 class="form-signin-heading">Autenticação</h2>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
+            @if(usuarioForm.hasGlobalErrors) {
+            <p class="alert alert-danger text-center">
+                <b>@usuarioForm.globalError.message</b>
+            </p>
+            }
 
+            <label class="sr-only">Email address</label>
+            @inputText(usuarioForm("email"), 'class -> "form-control", 'placeholder -> "Email")
+            <label class="sr-only">Password</label>
+            @inputPassword(usuarioForm("senha"), 'class -> "form-control", 'placeholder -> "Senha")
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Autenticar</button>
+            <br>
+            <p class="text-center">&copy; 2015 Market Systems</p>
+            }
+        </div>
     </div> <!-- /container -->
 </body>
 </html>

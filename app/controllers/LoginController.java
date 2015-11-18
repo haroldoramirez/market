@@ -57,7 +57,7 @@ public class LoginController extends Controller {
         }
 
         DynamicForm formDeErro = form.fill(requestForm.data());
-        formDeErro.reject("O email ou senha não existem");
+        formDeErro.reject("O email ou senha não existem!");
         return forbidden(views.html.login.render(formDeErro));
     }
 
